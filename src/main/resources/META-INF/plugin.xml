@@ -1,18 +1,21 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.stevenbuglione.intelijplugingdemo</id>
-    <name>IntelliJ Platform Plugin Intelij-Pluging-Demo</name>
-    <vendor>stevenbuglione</vendor>
+    <id>com.github.stevenbuglione.intelijplugingdemo.actions</id>
+    <name>My IntelliJ Plugin</name>
+    <description>My awesome plugin description</description>
+    <version>1.0</version>
+    <vendor email="me@example.com" url="https://example.com">My Company</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.all</depends>
+
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.stevenbuglione.intelijplugingdemo.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.stevenbuglione.intelijplugingdemo.services.MyProjectService"/>
+        <codeInsight.lineMarkerProvider language="" implementationClass="com.github.stevenbuglione.intelijplugingdemo.actions.CommentGutterIconProvider"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.stevenbuglione.intelijplugingdemo.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+
+    </actions>
+
 </idea-plugin>
+
