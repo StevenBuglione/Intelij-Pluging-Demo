@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.stevenbuglione.intelijplugingdemo.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.stevenbuglione.intelijplugingdemo.MyBundle
 
 class MyApplicationService {
 
