@@ -7,6 +7,7 @@ import com.intellij.psi.*;
 
 import javax.swing.*;
 import java.awt.event.MouseEvent;
+import java.io.*;
 
 
 class CommentGutterIconNavigationHandler implements GutterIconNavigationHandler<PsiComment> {
@@ -88,6 +89,9 @@ class CommentGutterIconNavigationHandler implements GutterIconNavigationHandler<
                 // Get the index of the comment in the method text
                 int commentIndex = methodText.indexOf(commentText);
 
+                // Test exe
+                String chatGPT = runDemoExe(commentText);
+
                 // Get the index of the end of the comment
                 int endIndex = commentIndex + commentText.length();
 
@@ -115,4 +119,43 @@ class CommentGutterIconNavigationHandler implements GutterIconNavigationHandler<
             }
         }
     }
+
+
+    public String runDemoExe(String arg) {
+        String output = "";
+        try {
+            // Get the input stream for the demo.exe file in the resources folder
+            InputStream inputStream = getClass().getResourceAsStream("/META-INF/demo.exe");
+            // Create a temporary file to write the input stream to
+            File tempFile = File.createTempFile("demo", ".exe");
+            tempFile.deleteOnExit();
+            // Write the input stream to the temporary file
+            FileOutputStream outputStream = new FileOutputStream(tempFile);
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+            inputStream.close();
+            outputStream.close();
+
+            // Construct the command to run the demo.exe file with the argument
+            String command = "\"" + tempFile.getAbsolutePath() + "\" \"" + arg + "\"";
+
+            // Run the command and read the output
+            Process process = Runtime.getRuntime().exec(command);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output += line;
+            }
+            process.waitFor();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        return output;
+    }
 }
+
+
+

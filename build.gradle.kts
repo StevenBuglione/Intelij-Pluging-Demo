@@ -1,6 +1,8 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 
+val implementation: Unit = Unit
+
 
 fun properties(key: String) = project.findProperty(key).toString()
 
@@ -29,6 +31,12 @@ repositories {
     gradlePluginPortal()
 
 }
+
+dependencies {
+    implementation ("org.python:jython:2.7.2")
+}
+
+
 
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
