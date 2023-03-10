@@ -1,6 +1,7 @@
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
 
+
 fun properties(key: String) = project.findProperty(key).toString()
 
 plugins {
@@ -14,12 +15,19 @@ plugins {
     id("org.jetbrains.qodana") version "0.1.13"
 }
 
+
+
+
 group = properties("pluginGroup")
 version = properties("pluginVersion")
+
+
 
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    gradlePluginPortal()
+
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html

@@ -1,32 +1,15 @@
 package com.github.stevenbuglione.intelijplugingdemo.actions;
-
-import com.intellij.codeHighlighting.Pass;
 import com.intellij.codeInsight.daemon.*;
-import com.intellij.ide.browsers.BrowserLauncher;
 import com.intellij.openapi.editor.markup.GutterIconRenderer;
 
 import com.intellij.openapi.util.IconLoader;
 import com.intellij.openapi.util.NlsContexts;
 import com.intellij.psi.PsiComment;
 import com.intellij.psi.PsiElement;
-import com.intellij.ui.awt.RelativePoint;
-import com.intellij.util.ConstantFunction;
 import com.intellij.util.Function;
-import com.intellij.util.IconUtil;
-import com.intellij.util.ui.ColorIcon;
-import com.intellij.util.ui.EmptyIcon;
-import com.intellij.util.ui.JBUI;
-import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.InputEvent;
-import java.awt.event.MouseEvent;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.function.Supplier;
 
 public class CommentGutterIconProvider implements LineMarkerProvider {
